@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { StyleSheet, FlatList, ActivityIndicator, Platform } from 'react-native'
 import React from 'react'
 import PokemonCard from './PokemonCard';
 
@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     flatListContentContainer: {
         padding: 5,
         overflow: "hidden",
+        marginTop: Platform.OS === 'ios' ? 0 : 10, //Os platform style independent
     },
     spinner: {
         marginTop: 20,
-        marginBottom: 60,
+        marginBottom: Platform.OS === 'ios' ? 60 : 80, //Os platform style independent
     }
 })

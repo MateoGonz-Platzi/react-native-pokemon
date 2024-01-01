@@ -22,7 +22,7 @@ export default function PokemonStack() {
     return (
         <StackNavigation.Navigator>
             <StackNavigation.Screen name="PokedexTab" component={PokedexScreen} options={PokedexTab} />
-            <StackNavigation.Screen name="PokemonTab" component={PokemonScreen} options={pokemonTab} />
+            <StackNavigation.Screen name="Pokemon" component={PokemonScreen} options={pokemonTab} />
         </StackNavigation.Navigator>
     )
 }
