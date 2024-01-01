@@ -6,23 +6,11 @@ import PokedexScreen from '../screens/PokedexScreen';
 
 const StackNavigation = createStackNavigator();
 
-const stackOptions = {
-    pokedexTab: {
-        headerTitleAlign: 'center',
-        headerTitle: 'Pokedex'
-    },
-    pokemonTab: {
-        headerTitleAlign: 'center',
-        headerTitle: 'Pokemon'
-    }
-}
-
 export default function PokemonStack() {
-    const { PokedexTab, pokemonTab } = stackOptions;
     return (
         <StackNavigation.Navigator>
-            <StackNavigation.Screen name="PokedexTab" component={PokedexScreen} options={PokedexTab} />
-            <StackNavigation.Screen name="Pokemon" component={PokemonScreen} options={pokemonTab} />
+            <StackNavigation.Screen name="Pokedex" component={PokedexScreen} options={{ headerTitleAlign: 'center', headerTitle: 'Pokedex' }} />
+            <StackNavigation.Screen name="Pokemon" component={PokemonScreen} options={{ headerTitleAlign: 'center', headerTitle: 'Pokemon' }} />
         </StackNavigation.Navigator>
     )
 }
