@@ -2,6 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import { getPokemonById } from '../api/pokemon.service';
 import Header from '../components/Pokemon/Header';
+import Type from '../components/Pokemon/Type';
 
 
 
@@ -18,6 +19,7 @@ export default function PokemonScreen(props) {
                         id: res.id,
                         name: res.name,
                         type: res.types[0].type.name,
+                        allTypes: res.types,
                         order: res.order,
                         image: res.sprites.other['official-artwork'].front_default,
                     });
@@ -30,6 +32,7 @@ export default function PokemonScreen(props) {
     return (
         <ScrollView>
             <Header pokemon={pokemon}></Header>
+            <Type types={pokemon.allTypes}></Type>
         </ScrollView>
     )
 }

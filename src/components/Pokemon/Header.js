@@ -19,7 +19,6 @@ export default function Header(props) {
                 </View>
                 <View style={styles.container}>
                     <Image source={{ uri: image }} style={styles.image} />
-                    <Text>Pokemon Header</Text>
                 </View>
             </SafeAreaView>
         </>
