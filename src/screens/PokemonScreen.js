@@ -4,12 +4,27 @@ import { getPokemonById } from '../api/pokemon.service';
 import Header from '../components/Pokemon/Header';
 import Type from '../components/Pokemon/Type';
 import Stats from '../components/Pokemon/Stats';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 
 export default function PokemonScreen(props) {
     const { navigation, route: { params } } = props;
     const [pokemon, setPokemon] = React.useState(null);
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => null,
+            headerLeft: () => (
+                <Icon
+                    name="arrow-left"
+                    color="#FFF"
+                    size={20}
+                    style={{ marginLeft: 20 }}
+                    onPress={() => navigation.goBack()}
+                />)
+        });
+    }, [navigation, params]); //Cada vez que navigation o params sea ejecutado, se ejecutará el useEffect.
 
     useEffect(() => {
         (async () => {
