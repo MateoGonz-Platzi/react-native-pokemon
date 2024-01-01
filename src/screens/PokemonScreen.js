@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { getPokemonById } from '../api/pokemon.service';
 import Header from '../components/Pokemon/Header';
 import Type from '../components/Pokemon/Type';
+import Stats from '../components/Pokemon/Stats';
 
 
 
@@ -21,6 +22,7 @@ export default function PokemonScreen(props) {
                         type: res.types[0].type.name,
                         allTypes: res.types,
                         order: res.order,
+                        stats: res.stats,
                         image: res.sprites.other['official-artwork'].front_default,
                     });
                 } catch (error) { navigation.goBack(); }
@@ -33,6 +35,7 @@ export default function PokemonScreen(props) {
         <ScrollView>
             <Header pokemon={pokemon}></Header>
             <Type types={pokemon.allTypes}></Type>
+            <Stats stats={pokemon.stats}></Stats>
         </ScrollView>
     )
 }

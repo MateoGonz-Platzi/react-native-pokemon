@@ -14,7 +14,7 @@ export default function Type(props) {
                     backgroundColor: getColorType(item.type.name),
                     ...styles.pill
                 }}>
-                    <Text style={{ fontWeight: 'bold' }}>{capitalize(item.type.name)}</Text>
+                    <Text style={styles.pill.pillValue}>{capitalize(item.type.name)}</Text>
                 </View>
             )
             }
@@ -34,5 +34,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         marginHorizontal: 10,
         borderRadius: 20,
+        pillValue: {
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+            color: "#fff"
+        }
     }
 })
