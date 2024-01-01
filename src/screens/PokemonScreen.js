@@ -1,12 +1,35 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView } from 'react-native'
+import React, { useEffect } from 'react'
+import { getPokemonById } from '../api/pokemon.service';
+import Header from '../components/Pokemon/Header';
 
 
 
-export default function PokemonScreen() {
+export default function PokemonScreen(props) {
+    const { navigation, route: { params } } = props;
+    const [pokemon, setPokemon] = React.useState(null);
+
+    useEffect(() => {
+        (async () => {
+            if (params.id) {
+                try {
+                    const res = await getPokemonById(params.id);
+                    setPokemon({
+                        id: res.id,
+                        name: res.name,
+                        type: res.types[0].type.name,
+                        order: res.order,
+                        image: res.sprites.other['official-artwork'].front_default,
+                    });
+                } catch (error) { navigation.goBack(); }
+            }
+        })();
+    }, [params]); //Cada vez que params sea ejecutado, se ejecutará el useEffect.
+
+    if (!pokemon) return null
     return (
-        <View>
-            <Text>PokemonScreen</Text>
-        </View>
+        <ScrollView>
+            <Header pokemon={pokemon}></Header>
+        </ScrollView>
     )
 }

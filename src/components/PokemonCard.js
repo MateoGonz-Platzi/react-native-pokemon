@@ -3,17 +3,17 @@ import React from 'react'
 import { pokemonCard } from '../../assets/utils/pokemonCard.styles';
 import getColorType from '../../assets/utils/getColorType';
 import { capitalize } from 'lodash';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = pokemonCard;
 
 export default function PokemonCard(props) {
     const { pokemon } = props;
-
+    const navigation = useNavigation();
     const bgStyle = { backgroundColor: getColorType(pokemon.type), ...styles.card }
 
     const goToPokemon = () => {
-        console.log('goToPokemon', pokemon.name);
-        console.log('goToPokemon', pokemon.image);
+        navigation.navigate('Pokemon', { id: pokemon.id });
     };
 
     return (
