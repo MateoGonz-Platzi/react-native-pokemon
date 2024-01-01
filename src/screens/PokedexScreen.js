@@ -12,7 +12,6 @@ export default function PokedexScreen() {
     const pokemonListReq = async () => {
         try {
             const response = await getPokemonList(nextUrl);
-            setNextUrl(response.next);
             const pokemonArray = [];
             for await (const pokemon of response.results) {
                 const pokemonDetails = await getPokemonByUrl(pokemon.url);
@@ -25,11 +24,11 @@ export default function PokedexScreen() {
                 });
             };
             setPokemonList([...pokemonList, ...pokemonArray]);
+            setNextUrl(response.next);
         } catch (error) { console.error(error); }
     };
 
     useEffect(() => {
-        setPokemonList([]);
         (async () => { await pokemonListReq() })();
     }, []);
 
